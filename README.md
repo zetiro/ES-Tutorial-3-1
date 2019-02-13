@@ -48,7 +48,9 @@ Product Version. 6.6.0(2019/02/07 기준 Latest Ver.)
   4) http.port, transport.tcp.port 추가 설정
   5) discovery.zen.minimum_master_nodes 추가 설정
   6) discovery.zen.ping.unicast.hosts 는 직접 수정 필요
-  - **./tuto3 2 실행 후 discovery.zen.ping.unicast.hosts 에 기존 장비와 추가하는 노드 2대의 ip:9300 설정 필요**
+  7) 클러스터에 노드 2대가 정상적으로 추가되면 기존 장비의 설정도 동일하게 수정해둡니다.
+    - **./tuto3 2 실행 후 discovery.zen.ping.unicast.hosts 에 기존 장비와 추가하는 노드 2대의 ip:9300 설정 필요**
+
 
 * /etc/elasticsearch/jvm.options
   - Xms1g, Xmx1g 를 물리 메모리의 절반으로 수정
