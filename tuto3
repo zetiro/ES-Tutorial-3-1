@@ -66,9 +66,14 @@ function configure_es_yaml
 # Start Elasticsearch
 function start_es_process
 {
-    sudo systemctl daemon-reload
-    sudo systemctl enable elasticsearch.service
-    sudo systemctl restart elasticsearch
+    sudo cat /etc/elasticsearch/elasticsearch.yml | grep '"",  "",  "",' > /dev/null
+    if [ $? -eq 0 ]; then
+        echo "Set your unicast.hosts!! Edit your /etc/elasticsearch/elasticsearch.yml & Input your node1,2,3 in \"\""
+    else
+        sudo systemctl daemon-reload
+        sudo systemctl enable elasticsearch.service
+        sudo systemctl restart elasticsearch
+    fi
 }
 
 if [ -z $1 ]; then
