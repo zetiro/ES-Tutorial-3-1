@@ -130,7 +130,7 @@ discovery.zen.ping.unicast.hosts: [  "{IP1}:9300",  "{IP2}:9300",  "{IP3}:9300",
 ### Elasticsearch
 
 ```bash
-[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ curl localhost:9200
+[ec2-user@ip-xxx-xxx-xxx-xxx ES-Tutorial-3]$ curl localhost:9200
 {
   "name" : "ip-172-31-13-110",
   "cluster_name" : "mytuto-es",
@@ -165,6 +165,6 @@ path.logs: /var/log/elasticsearch 로 설정되어 cluster.name 이 적용된 �
 위의 경우에는 /var/log/elasticsearch/mytuto-es.log 에서 확인할 수 있습니다.
 
 ```bash
-[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ sudo vi /var/log/elasticsearch/mytuto-es.log
+[ec2-user@ip-xxx-xxx-xxx-xxx ES-Tutorial-3]$ sudo vi /var/log/elasticsearch/mytuto-es.log
 ```
 
