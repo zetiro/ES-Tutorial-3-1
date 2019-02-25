@@ -107,8 +107,8 @@ discovery.zen.ping.unicast.hosts: [  "{IP1}:9300",  "{IP2}:9300",  "{IP3}:9300",
 
 ```
 
-* /etc/elasticsearch/jvm.options
-  - Xms1g, Xmx1g 를 물리 메모리의 절반으로 수정
+/etc/elasticsearch/jvm.options
+1) Xms1g, Xmx1g 를 물리 메모리의 절반으로 수정
 
 ```bash
 [ec2-user@ip-xxx-xxx-xxx-xxx ES-Tutorial-3]$ sudo vi /etc/elasticsearch/jvm.options
@@ -118,7 +118,7 @@ discovery.zen.ping.unicast.hosts: [  "{IP1}:9300",  "{IP2}:9300",  "{IP3}:9300",
 
 ```
 
-* 두 파일 모두 수정이 완료되었으면 추가할 노드 2대에서 스크립트 3번을 실행하여 ES 프로세스 시작, 클러스터에 잘 조인되는지 확인
+두 파일 모두 수정이 완료되었으면 추가할 노드 2대에서 스크립트 3번을 실행하여 ES 프로세스 시작, 클러스터에 잘 조인되는지 확인
 
 ```bash
 [ec2-user@ip-xxx-xxx-xxx-xxx ES-Tutorial-3]$ ./tuto3 3
