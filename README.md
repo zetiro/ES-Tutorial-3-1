@@ -1,4 +1,4 @@
-# ES-Tutorial-3
+# # ES-Tutorial-3
 
 ElasticSearch 세 번째 튜토리얼을 기술합니다.
 
@@ -33,7 +33,6 @@ Product Version. 6.6.0(2019/02/07 기준 Latest Ver.)
          3 : start elasticsearch process
 #########################################
 
-
 [ec2-user@ip-xxx-xxx-xxx-xxx ES-Tutorial-1]$ ./tuto3 1
 
 ```
@@ -46,46 +45,72 @@ Product Version. 6.6.0(2019/02/07 기준 Latest Ver.)
   2) network.host 를 network.bind_host 와 network.publish_host 로 분리
   3) http.port, transport.tcp.port 추가 설정
   4) node.master, node.data role 추가 설정
-  5) discovery.zen.minimum_master_nodes 추가 설정
-  6) **discovery.zen.ping.unicast.hosts 는 직접 수정 필요**
-  7) 클러스터에 노드 2대가 정상적으로 추가되면 기존 장비의 설정도 동일하게 수정해둡니다.
-    - **./tuto3 2 실행 후 discovery.zen.ping.unicast.hosts 에 기존 장비와 추가하는 노드 2대의 ip:9300 설정 필요**
-
-
-* /etc/elasticsearch/jvm.options
-  - Xms1g, Xmx1g 를 물리 메모리의 절반으로 수정
-
+  
 ```bash
 [ec2-user@ip-xxx-xxx-xxx-xxx ~]$ sudo vi /etc/elasticsearch/elasticsearch.yml
 ### For ClusterName & Node Name
 cluster.name: mytuto-es
 node.name: ip-172-31-13-110
-### For Response by External Request
-network.bind_host: 0.0.0.0
-network.publish_host: {IP}
 
 ### For Head
 http.cors.enabled: true
 http.cors.allow-origin: "*"
 
-### ES Node Role Settings
-node.master: true
-node.data: true
+### For Response by External Request
+network.bind_host: 0.0.0.0
+network.publish_host: {IP}
 
 ### ES Port Settings
 http.port: 9200
 transport.tcp.port: 9300
 
-### Discovery Settings
-discovery.zen.ping.unicast.hosts: [  "{IP1}:9300",  "{IP2}:9300",  "{IP3}:9300",  ]
-discovery.zen.minimum_master_nodes: 2
+### ES Node Role Settings
+node.master: true
+node.data: true
 
+```  
+
+  5) discovery.zen.minimum_master_nodes 추가 설정
+  6) discovery.zen.ping.unicast.hosts 는 직접 수정 필요
+  7) **./tuto3 2 실행 후 discovery.zen.ping.unicast.hosts 에 기존 장비와 추가하는 노드 2대의 ip:9300 설정 필요**
+
+```bash
+[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ sudo vi /etc/elasticsearch/elasticsearch.yml
+
+### Discovery Settings
+discovery.zen.minimum_master_nodes: 2
+discovery.zen.ping.unicast.hosts: [  "{IP1}:9300",  "{IP2}:9300",  "{IP3}:9300",  ]
+
+```
+  8) 클러스터에 노드 2대가 정상적으로 추가되면 기존 장비 한 대의 설정도 동일하게 수정해둡니다. ES 프로세스를 재시작할 필요는 없습니다. 나중에 장애 혹은 작업으로 재시작 될 때 클러스터에 수정한 정보를 바탕으로 조인됩니다. 튜토 1에서 설치한 장비에 아래 세팅을 추가해줍니다.
+
+```bash
+### For Response by External Request
+network.bind_host: 0.0.0.0
+network.publish_host: {IP}
+
+### ES Port Settings
+http.port: 9200
+transport.tcp.port: 9300
+
+### ES Node Role Settings
+node.master: true
+node.data: true
+
+### Discovery Settings
+discovery.zen.minimum_master_nodes: 2
+discovery.zen.ping.unicast.hosts: [  "{IP1}:9300",  "{IP2}:9300",  "{IP3}:9300",  ]
+
+```
+
+* /etc/elasticsearch/jvm.options
+  - Xms1g, Xmx1g 를 물리 메모리의 절반으로 수정
+
+```bash
 [ec2-user@ip-xxx-xxx-xxx-xxx ~]$ sudo vi /etc/elasticsearch/jvm.options
 
-- -Xms1g
-+ -Xms2g
-- -Xmx1g
-+ -Xmx2g
+-Xms2g
+-Xmx2g
 ```
 
 ## Smoke Test
@@ -114,7 +139,7 @@ discovery.zen.minimum_master_nodes: 2
 
 ```
 
-* Web Browser 에 [http://ec2-52-221-155-168.ap-southeast-1.compute.amazonaws.com:9100/index.html?base_uri=http://{FQDN}:9200](http://ec2-52-221-155-168.ap-southeast-1.compute.amazonaws.com:9100/index.html?base_uri=http://FQDN:9200) 실행
+* Web Browser 에 [http://ec2-3-0-99-205.ap-southeast-1.compute.amazonaws.com:9100/index.html?base_uri=http://{FQDN}:9200](http://ec2-3-0-99-205.ap-southeast-1.compute.amazonaws.com:9100/index.html?base_uri=http://{FQDN}:9200) 실행
 
 ![Optional Text](image/es-head.png)
 
