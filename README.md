@@ -42,12 +42,12 @@ Product Version. 6.6.0(2019/02/07 기준 Latest Ver.)
 ## ELK Tutorial 3 - Elasticsearch Node 추가
 
 ### Elasticsearch
-* /etc/elasticsearch/elasticsearch.yml
+/etc/elasticsearch/elasticsearch.yml
 
-  + cluster.name, node.name, http.cors.enabled, http.cors.allow-origin 기존장비와 동일 설정
-  + network.host 를 network.bind_host 와 network.publish_host 로 분리
-  + http.port, transport.tcp.port 추가 설정
-  + node.master, node.data role 추가 설정
+1) cluster.name, node.name, http.cors.enabled, http.cors.allow-origin 기존장비와 동일 설정
+2) network.host 를 network.bind_host 와 network.publish_host 로 분리
+3) http.port, transport.tcp.port 추가 설정
+4) node.master, node.data role 추가 설정
   
 ```bash
 [ec2-user@ip-xxx-xxx-xxx-xxx ES-Tutorial-3]$ sudo vi /etc/elasticsearch/elasticsearch.yml
@@ -73,9 +73,9 @@ node.data: true
 
 ```  
 
-  + discovery.zen.minimum_master_nodes 추가 설정
-  + discovery.zen.ping.unicast.hosts 는 직접 수정 필요
-  + **./tuto3 2 실행 후 discovery.zen.ping.unicast.hosts 에 기존 장비와 추가하는 노드 2대의 ip:9300 설정 필요**
+5) discovery.zen.minimum_master_nodes 추가 설정
+6) discovery.zen.ping.unicast.hosts 는 직접 수정 필요
+7) **./tuto3 2 실행 후 discovery.zen.ping.unicast.hosts 에 기존 장비와 추가하는 노드 2대의 ip:9300 설정 필요**
 
 ```bash
 [ec2-user@ip-xxx-xxx-xxx-xxx ES-Tutorial-3]$ sudo vi /etc/elasticsearch/elasticsearch.yml
@@ -86,7 +86,7 @@ discovery.zen.ping.unicast.hosts: [  "{IP1}:9300",  "{IP2}:9300",  "{IP3}:9300",
 
 
 ```
-  + 클러스터에 노드 2대가 정상적으로 추가되면 기존 장비 한 대의 설정도 동일하게 수정해둡니다. **ES 프로세스를 재시작할 필요는 없습니다.** 나중에 장애 혹은 작업으로 재시작 될 때 클러스터에 수정한 정보를 바탕으로 조인됩니다. 튜토 1에서 설치한 장비에 아래 세팅을 추가해줍니다.
+8) 클러스터에 노드 2대가 정상적으로 추가되면 기존 장비 한 대의 설정도 동일하게 수정해둡니다. **ES 프로세스를 재시작할 필요는 없습니다.** 나중에 장애 혹은 작업으로 재시작 될 때 클러스터에 수정한 정보를 바탕으로 조인됩니다. 튜토 1에서 설치한 장비에 아래 세팅을 추가해줍니다.
 
 ```bash
 ### For Response by External Request
