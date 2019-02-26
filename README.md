@@ -33,10 +33,6 @@ Product Version. 6.6.0(2019/02/07 기준 Latest Ver.)
          3 : start elasticsearch process
 #########################################
 
-[ec2-user@ip-xxx-xxx-xxx-xxx ES-Tutorial-3]$ ./tuto3 1
-
-[ec2-user@ip-xxx-xxx-xxx-xxx ES-Tutorial-3]$ ./tuto3 2
-
 ```
 
 ## ELK Tutorial 3 - Elasticsearch Node 추가
@@ -50,6 +46,10 @@ Product Version. 6.6.0(2019/02/07 기준 Latest Ver.)
 4) node.master, node.data role 추가 설정
   
 ```bash
+[ec2-user@ip-xxx-xxx-xxx-xxx ES-Tutorial-3]$ ./tuto3 1
+
+[ec2-user@ip-xxx-xxx-xxx-xxx ES-Tutorial-3]$ ./tuto3 2
+
 [ec2-user@ip-xxx-xxx-xxx-xxx ES-Tutorial-3]$ sudo vi /etc/elasticsearch/elasticsearch.yml
 ### For ClusterName & Node Name
 cluster.name: mytuto-es
@@ -84,8 +84,8 @@ node.data: true
 discovery.zen.minimum_master_nodes: 2
 discovery.zen.ping.unicast.hosts: [  "{IP1}:9300",  "{IP2}:9300",  "{IP3}:9300",  ]
 
-
 ```
+
 8) 클러스터에 노드 2대가 정상적으로 추가되면 기존 장비 한 대의 설정도 동일하게 수정해둡니다. **ES 프로세스를 재시작할 필요는 없습니다.** 나중에 장애 혹은 작업으로 재시작 될 때 클러스터에 수정한 정보를 바탕으로 조인됩니다. 튜토 1에서 설치한 장비에 아래 세팅을 추가해줍니다.
 
 ```bash
