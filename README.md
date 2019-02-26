@@ -41,10 +41,10 @@ Product Version. 6.6.0(2019/02/07 기준 Latest Ver.)
 /etc/elasticsearch/elasticsearch.yml
 
 1) cluster.name, node.name, http.cors.enabled, http.cors.allow-origin 기존장비와 동일 설정
-2) network.host 를 network.bind_host 와 network.publish_host 로 분리
+2) **network.host 를 network.bind_host 와 network.publish_host 로 분리**
 3) http.port, transport.tcp.port 추가 설정
 4) node.master, node.data role 추가 설정
-  
+
 ```bash
 [ec2-user@ip-xxx-xxx-xxx-xxx ES-Tutorial-3]$ ./tuto3 1
 
@@ -71,11 +71,11 @@ transport.tcp.port: 9300
 node.master: true
 node.data: true
 
-```  
+```
 
 5) discovery.zen.minimum_master_nodes 추가 설정
 6) discovery.zen.ping.unicast.hosts 는 직접 수정 필요
-7) **./tuto3 2 실행 후 discovery.zen.ping.unicast.hosts 에 기존 장비와 추가하는 노드 2대의 ip:9300 설정 필요**
+7) **./tuto3 1 ./tuto3 2 실행 후 discovery.zen.ping.unicast.hosts 에 기존 장비와 추가하는 노드 2대의 ip:9300 설정 필요**
 
 ```bash
 [ec2-user@ip-xxx-xxx-xxx-xxx ES-Tutorial-3]$ sudo vi /etc/elasticsearch/elasticsearch.yml
