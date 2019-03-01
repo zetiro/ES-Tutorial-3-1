@@ -53,7 +53,7 @@ Product Version. 6.6.0(2019/02/07 기준 Latest Ver.)
 [ec2-user@ip-xxx-xxx-xxx-xxx ES-Tutorial-3]$ sudo vi /etc/elasticsearch/elasticsearch.yml
 ### For ClusterName & Node Name
 cluster.name: mytuto-es
-node.name: ip-172-31-13-110
+node.name: master-ip-172-31-13-110
 
 ### For Head
 http.cors.enabled: true
@@ -132,7 +132,7 @@ discovery.zen.ping.unicast.hosts: [  "{IP1}:9300",  "{IP2}:9300",  "{IP3}:9300",
 ```bash
 [ec2-user@ip-xxx-xxx-xxx-xxx ES-Tutorial-3]$ curl localhost:9200
 {
-  "name" : "ip-172-31-13-110",
+  "name" : "master-ip-172-31-13-110",
   "cluster_name" : "mytuto-es",
   "cluster_uuid" : "fzHl1JNvRd-3KHlleS1WIw",
   "version" : {
