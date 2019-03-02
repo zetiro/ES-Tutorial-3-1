@@ -56,7 +56,7 @@ function configure_es_yaml
 
     sudo echo "### For Head" | sudo tee -a ${ES_ETC}/${ES_MYML} > /dev/null
     sudo echo "http.cors.enabled: true" | sudo tee -a ${ES_ETC}/${ES_MYML} > /dev/null
-    sudo echo "http.cors.allow-origin: "*"" | sudo tee -a ${ES_ETC}/${ES_MYML} > /dev/null
+    sudo echo "http.cors.allow-origin: \"*\"" | sudo tee -a ${ES_ETC}/${ES_MYML} > /dev/null
     sudo echo "" | sudo tee -a ${ES_ETC}/${ES_MYML} > /dev/null
     sudo echo "### For Response by External Request" | sudo tee -a ${ES_ETC}/${ES_MYML} > /dev/null
     sudo echo "network.bind_host: 0.0.0.0" | sudo tee -a ${ES_ETC}/${ES_MYML} > /dev/null
