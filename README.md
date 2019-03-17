@@ -1,4 +1,4 @@
-# ES-Tutorial-3
+# ES-Tutorial-3-1
 
 ElasticSearch 세 번째 튜토리얼을 기술합니다.
 
@@ -20,11 +20,11 @@ Product Version. 6.6.0(2019/02/07 기준 Latest Ver.)
 ```bash
 [ec2-user@ip-xxx-xxx-xxx-xxx ~]$ sudo yum -y install git
 
-[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ git clone https://github.com/benjamin-btn/ES-Tutorial-3.git
+[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ git clone https://github.com/benjamin-btn/ES-Tutorial-3-1.git
 
-[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ cd ES-Tutorial-3
+[ec2-user@ip-xxx-xxx-xxx-xxx ~]$ cd ES-Tutorial-3-1
 
-[ec2-user@ip-xxx-xxx-xxx-xxx ES-Tutorial-3]$ ./tuto3
+[ec2-user@ip-xxx-xxx-xxx-xxx ES-Tutorial-3-1]$ ./tuto3
 ##################### Menu ##############
  $ ./tuto3 [Command]
 #####################%%%%%%##############
@@ -46,11 +46,11 @@ Product Version. 6.6.0(2019/02/07 기준 Latest Ver.)
 4) node.master, node.data role 추가 설정
 
 ```bash
-[ec2-user@ip-xxx-xxx-xxx-xxx ES-Tutorial-3]$ ./tuto3 1
+[ec2-user@ip-xxx-xxx-xxx-xxx ES-Tutorial-3-1]$ ./tuto3 1
 
-[ec2-user@ip-xxx-xxx-xxx-xxx ES-Tutorial-3]$ ./tuto3 2
+[ec2-user@ip-xxx-xxx-xxx-xxx ES-Tutorial-3-1]$ ./tuto3 2
 
-[ec2-user@ip-xxx-xxx-xxx-xxx ES-Tutorial-3]$ sudo vi /etc/elasticsearch/elasticsearch.yml
+[ec2-user@ip-xxx-xxx-xxx-xxx ES-Tutorial-3-1]$ sudo vi /etc/elasticsearch/elasticsearch.yml
 ### For ClusterName & Node Name
 cluster.name: mytuto-es
 node.name: master-ip-172-31-13-110
@@ -78,7 +78,7 @@ node.data: true
 7) **./tuto3 1 ./tuto3 2 실행 후 discovery.zen.ping.unicast.hosts 에 기존 장비와 추가하는 노드 2대의 ip:9300 설정 필요**
 
 ```bash
-[ec2-user@ip-xxx-xxx-xxx-xxx ES-Tutorial-3]$ sudo vi /etc/elasticsearch/elasticsearch.yml
+[ec2-user@ip-xxx-xxx-xxx-xxx ES-Tutorial-3-1]$ sudo vi /etc/elasticsearch/elasticsearch.yml
 
 ### Discovery Settings
 discovery.zen.minimum_master_nodes: 2
@@ -111,7 +111,7 @@ discovery.zen.ping.unicast.hosts: [  "{IP1}:9300",  "{IP2}:9300",  "{IP3}:9300",
 9) Xms1g, Xmx1g 를 물리 메모리의 절반으로 수정
 
 ```bash
-[ec2-user@ip-xxx-xxx-xxx-xxx ES-Tutorial-3]$ sudo vi /etc/elasticsearch/jvm.options
+[ec2-user@ip-xxx-xxx-xxx-xxx ES-Tutorial-3-1]$ sudo vi /etc/elasticsearch/jvm.options
 
 -Xms2g
 -Xmx2g
@@ -121,7 +121,7 @@ discovery.zen.ping.unicast.hosts: [  "{IP1}:9300",  "{IP2}:9300",  "{IP3}:9300",
 10) 두 파일 모두 수정이 완료되었으면 추가할 노드 2대에서 스크립트 3번을 실행하여 ES 프로세스 시작, 클러스터에 잘 조인되는지 확인
 
 ```bash
-[ec2-user@ip-xxx-xxx-xxx-xxx ES-Tutorial-3]$ ./tuto3 3
+[ec2-user@ip-xxx-xxx-xxx-xxx ES-Tutorial-3-1]$ ./tuto3 3
 
 ```
 
@@ -130,7 +130,7 @@ discovery.zen.ping.unicast.hosts: [  "{IP1}:9300",  "{IP2}:9300",  "{IP3}:9300",
 ### Elasticsearch
 
 ```bash
-[ec2-user@ip-xxx-xxx-xxx-xxx ES-Tutorial-3]$ curl localhost:9200
+[ec2-user@ip-xxx-xxx-xxx-xxx ES-Tutorial-3-1]$ curl localhost:9200
 {
   "name" : "master-ip-172-31-11-101",
   "cluster_name" : "mytuto-es",
@@ -165,6 +165,6 @@ path.logs: /var/log/elasticsearch 로 설정되어 cluster.name 이 적용된 �
 위의 경우에는 /var/log/elasticsearch/mytuto-es.log 에서 확인할 수 있습니다.
 
 ```bash
-[ec2-user@ip-xxx-xxx-xxx-xxx ES-Tutorial-3]$ sudo vi /var/log/elasticsearch/mytuto-es.log
+[ec2-user@ip-xxx-xxx-xxx-xxx ES-Tutorial-3-1]$ sudo vi /var/log/elasticsearch/mytuto-es.log
 ```
 
