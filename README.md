@@ -17,6 +17,10 @@ Product Version. 6.6.0(2019/02/07 기준 Latest Ver.)
 
 이 튜토리얼에서는 rpm 파일을 이용하여 실습합니다.
 
+https://github.com/benjamin-btn/ES-Tutorial-2
+
+Master 2~3번 장비에서 실습합니다.
+
 ```bash
 [ec2-user@ip-xxx-xxx-xxx-xxx ~]$ sudo yum -y install git
 
